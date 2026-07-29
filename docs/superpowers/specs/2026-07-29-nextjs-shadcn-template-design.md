@@ -18,19 +18,19 @@ than hand-writing config:
 
 ## Stack decisions
 
-| Area | Decision |
-|---|---|
-| Package manager | pnpm |
-| React version | 19 (whatever ships with latest Next.js) |
-| Directory layout | `src/` directory, App Router, `@/*` import alias |
-| shadcn style | CLI default preset (`shadcn init -d -y` → template `next`, preset `base-nova`). The old `--style`/`--base-color` flags were removed in shadcn CLI v4 (March 2026) in favor of an opaque preset system with no simple non-interactive "zinc" equivalent, so we take shadcn's own current default rather than hand-picking one. |
-| Dark mode | `next-themes` + `ThemeProvider` in root layout + a `ModeToggle` component (Button + DropdownMenu + lucide `Sun`/`Moon`) |
-| shadcn components | Base init (Button + `cn()` util) plus `dropdown-menu`, which the `ModeToggle` above requires — no components beyond what dark mode needs |
-| ESLint | Flat config (`eslint.config.mjs`) via current `eslint-config-next` (create-next-app default) |
-| Prettier | `prettier` + `prettier-plugin-tailwindcss`, `.prettierrc.json` + `.prettierignore`, `format`/`format:check` scripts |
-| Pre-commit hooks | Husky + lint-staged running `eslint --fix` and `prettier --write` on staged files |
-| CI | `.github/workflows/ci.yml` — install, lint, build on push/PR to `main` |
-| Testing | None — left out of a blank template, add per-project as needed |
+| Area              | Decision                                                                                                                                                                                                                                                                                                                      |
+| ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Package manager   | pnpm                                                                                                                                                                                                                                                                                                                          |
+| React version     | 19 (whatever ships with latest Next.js)                                                                                                                                                                                                                                                                                       |
+| Directory layout  | `src/` directory, App Router, `@/*` import alias                                                                                                                                                                                                                                                                              |
+| shadcn style      | CLI default preset (`shadcn init -d -y` → template `next`, preset `base-nova`). The old `--style`/`--base-color` flags were removed in shadcn CLI v4 (March 2026) in favor of an opaque preset system with no simple non-interactive "zinc" equivalent, so we take shadcn's own current default rather than hand-picking one. |
+| Dark mode         | `next-themes` + `ThemeProvider` in root layout + a `ModeToggle` component (Button + DropdownMenu + lucide `Sun`/`Moon`)                                                                                                                                                                                                       |
+| shadcn components | Base init (Button + `cn()` util) plus `dropdown-menu`, which the `ModeToggle` above requires — no components beyond what dark mode needs                                                                                                                                                                                      |
+| ESLint            | Flat config (`eslint.config.mjs`) via current `eslint-config-next` (create-next-app default)                                                                                                                                                                                                                                  |
+| Prettier          | `prettier` + `prettier-plugin-tailwindcss`, `.prettierrc.json` + `.prettierignore`, `format`/`format:check` scripts                                                                                                                                                                                                           |
+| Pre-commit hooks  | Husky + lint-staged running `eslint --fix` and `prettier --write` on staged files                                                                                                                                                                                                                                             |
+| CI                | `.github/workflows/ci.yml` — install, lint, build on push/PR to `main`                                                                                                                                                                                                                                                        |
+| Testing           | None — left out of a blank template, add per-project as needed                                                                                                                                                                                                                                                                |
 
 ## Page content
 

@@ -11,8 +11,8 @@ export default function Home() {
         nextjs-ts-shadcn-template
       </h1>
       <p className="text-muted-foreground max-w-md">
-        Next.js, TypeScript, Tailwind CSS, and shadcn/ui, wired up and ready
-        to build on.
+        Next.js, TypeScript, Tailwind CSS, and shadcn/ui, wired up and ready to
+        build on.
       </p>
       <Button>Get started</Button>
     </div>

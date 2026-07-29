@@ -24,9 +24,11 @@
 ### Task 1: Scaffold the Next.js project
 
 **Files:**
+
 - Create: entire `create-next-app` output (`package.json`, `next.config.ts`, `tsconfig.json`, `eslint.config.mjs`, `postcss.config.mjs`, `.gitignore`, `pnpm-workspace.yaml`, `src/app/layout.tsx`, `src/app/page.tsx`, `src/app/globals.css`, `public/*`, `README.md`)
 
 **Interfaces:**
+
 - Produces: a working Next.js app at the repo root with `pnpm dev`, `pnpm build`, `pnpm lint` scripts; `src/app/layout.tsx` exporting `RootLayout`; `src/app/page.tsx` exporting `Home`.
 
 - [ ] **Step 1: Run create-next-app in the existing directory**
@@ -80,6 +82,7 @@ git commit -m "Scaffold Next.js app with create-next-app"
 ### Task 2: Initialize shadcn/ui
 
 **Files:**
+
 - Create: `components.json`
 - Create: `src/lib/utils.ts`
 - Create: `src/components/ui/button.tsx`
@@ -88,6 +91,7 @@ git commit -m "Scaffold Next.js app with create-next-app"
 - Modify: `package.json` (adds `class-variance-authority`, `clsx`, `tailwind-merge`, `lucide-react`, `@base-ui/react`, `tw-animate-css`, `shadcn`)
 
 **Interfaces:**
+
 - Consumes: the Next.js/Tailwind project from Task 1.
 - Produces: `cn()` util at `@/lib/utils`; `Button` component at `@/components/ui/button` with `variant`/`size` props; `DropdownMenu`, `DropdownMenuTrigger`, `DropdownMenuContent`, `DropdownMenuItem` at `@/components/ui/dropdown-menu` — Task 3 consumes all of these.
 
@@ -136,12 +140,14 @@ git commit -m "Initialize shadcn/ui with Button and DropdownMenu"
 ### Task 3: Dark mode (next-themes + ThemeProvider + ModeToggle)
 
 **Files:**
+
 - Create: `src/components/theme-provider.tsx`
 - Create: `src/components/mode-toggle.tsx`
 - Modify: `src/app/layout.tsx`
 - Modify: `src/app/page.tsx`
 
 **Interfaces:**
+
 - Consumes: `Button`, `DropdownMenu*` from Task 2 (`@/components/ui/button`, `@/components/ui/dropdown-menu`); `next-themes`' `ThemeProvider`/`useTheme`.
 - Produces: `ThemeProvider` component at `@/components/theme-provider` wrapping `{children}` in `layout.tsx`; `ModeToggle` component at `@/components/mode-toggle` rendered in `page.tsx`.
 
@@ -291,8 +297,8 @@ export default function Home() {
         nextjs-ts-shadcn-template
       </h1>
       <p className="text-muted-foreground max-w-md">
-        Next.js, TypeScript, Tailwind CSS, and shadcn/ui, wired up and ready
-        to build on.
+        Next.js, TypeScript, Tailwind CSS, and shadcn/ui, wired up and ready to
+        build on.
       </p>
       <Button>Get started</Button>
     </div>
@@ -332,11 +338,13 @@ git commit -m "Add dark mode support with next-themes and a mode toggle"
 ### Task 4: Prettier + prettier-plugin-tailwindcss
 
 **Files:**
+
 - Create: `.prettierrc.json`
 - Create: `.prettierignore`
 - Modify: `package.json` (add `format`/`format:check` scripts and devDependencies)
 
 **Interfaces:**
+
 - Produces: `pnpm format` (writes), `pnpm format:check` (CI-safe check) — Task 6 (CI) consumes `format:check`; Task 5 (lint-staged) consumes the `prettier` binary directly.
 
 - [ ] **Step 1: Install Prettier and the Tailwind class-sorting plugin**
@@ -402,10 +410,12 @@ git commit -m "Add Prettier with prettier-plugin-tailwindcss"
 ### Task 5: Husky + lint-staged pre-commit hook
 
 **Files:**
+
 - Create: `.husky/pre-commit`
 - Modify: `package.json` (add `prepare` script, `lint-staged` config, devDependencies)
 
 **Interfaces:**
+
 - Consumes: `eslint` (Task 1) and `prettier` (Task 4) binaries.
 - Produces: a git pre-commit hook that runs `lint-staged` on every commit in this repo (and any repo cloned from it, once `pnpm install` runs the `prepare` script).
 
@@ -459,9 +469,11 @@ Expected: the commit output shows lint-staged's task runner (`Running tasks for 
 ### Task 6: GitHub Actions CI workflow
 
 **Files:**
+
 - Create: `.github/workflows/ci.yml`
 
 **Interfaces:**
+
 - Consumes: `pnpm lint`, `pnpm format:check`, `pnpm build` scripts (Tasks 1, 4).
 
 - [ ] **Step 1: Create the workflow file**
@@ -527,9 +539,11 @@ git commit -m "Add GitHub Actions CI workflow"
 ### Task 7: README
 
 **Files:**
+
 - Modify: `README.md` (currently the default create-next-app boilerplate)
 
 **Interfaces:**
+
 - None — documentation only.
 
 - [ ] **Step 1: Replace README.md**
