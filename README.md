@@ -33,5 +33,12 @@ See the [shadcn/ui component list](https://ui.shadcn.com/docs/components) for av
 
 - `pnpm dev` — start the dev server
 - `pnpm build` — production build
+- `pnpm start` — run the production build
 - `pnpm lint` — run ESLint
 - `pnpm format` / `pnpm format:check` — run/check Prettier formatting
+
+`pnpm install` also runs the `prepare` script, which sets up the Husky pre-commit hook automatically — no extra steps needed.
+
+## Using this template
+
+After cloning, rename the project by replacing `nextjs-ts-shadcn-template` in these three places: the `name` field in `package.json`, the metadata `title` in `src/app/layout.tsx`, and the heading in `src/app/page.tsx`.
