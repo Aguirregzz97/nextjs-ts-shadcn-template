@@ -23,7 +23,7 @@ than hand-writing config:
 | Package manager | pnpm |
 | React version | 19 (whatever ships with latest Next.js) |
 | Directory layout | `src/` directory, App Router, `@/*` import alias |
-| shadcn style | `new-york` style, `zinc` base color (matches quiniela-turbo) |
+| shadcn style | CLI default preset (`shadcn init -d -y` → template `next`, preset `base-nova`). The old `--style`/`--base-color` flags were removed in shadcn CLI v4 (March 2026) in favor of an opaque preset system with no simple non-interactive "zinc" equivalent, so we take shadcn's own current default rather than hand-picking one. |
 | Dark mode | `next-themes` + `ThemeProvider` in root layout + a `ModeToggle` component (Button + DropdownMenu + lucide `Sun`/`Moon`) |
 | shadcn components | Base init only (Button + `cn()` util) — no extra components pre-installed |
 | ESLint | Flat config (`eslint.config.mjs`) via current `eslint-config-next` (create-next-app default) |
