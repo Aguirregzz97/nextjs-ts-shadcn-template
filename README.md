@@ -59,4 +59,4 @@ After cloning, rename the project by replacing `nextjs-ts-shadcn-template` in th
 
 ## Working with Claude Code / AI agents
 
-See [`CLAUDE.md`](./CLAUDE.md) for stack details, commands, conventions, and version constraints worth knowing before upgrading dependencies in this repo.
+See [`CLAUDE.md`](./CLAUDE.md) for stack details, commands, conventions, and version constraints worth knowing before upgrading dependencies in this repo, and [`.claude/skills/shipping-changes`](./.claude/skills/shipping-changes/SKILL.md) for the required development workflow.

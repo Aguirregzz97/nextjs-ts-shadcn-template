@@ -35,6 +35,13 @@ npx tsc --noEmit   # type-check only (no dedicated package script)
 
 Before considering a change done, run `pnpm lint`, `pnpm format:check`, `npx tsc --noEmit`, and `pnpm build` — this mirrors what CI (`.github/workflows/ci.yml`) checks on every push/PR to `main`.
 
+## Development workflow
+
+When implementing a change the user asked for, follow
+[`.claude/skills/shipping-changes/SKILL.md`](./.claude/skills/shipping-changes/SKILL.md)
+— it's the single source of truth for the diff → review → `/code-review` →
+commit/push sequence; don't restate or summarize its steps elsewhere.
+
 ## How shadcn/ui works here (read this before using any UI component)
 
 shadcn/ui is **not** a component library you `import` from `node_modules`.
