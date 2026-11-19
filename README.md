@@ -12,6 +12,11 @@ A blank starter template: Next.js (App Router) + TypeScript + Tailwind CSS + sha
 - [Prettier](https://prettier.io) with `prettier-plugin-tailwindcss`
 - [Husky](https://typicode.github.io/husky) + [lint-staged](https://github.com/lint-staged/lint-staged) for pre-commit checks
 
+## Requirements
+
+- [Node.js](https://nodejs.org) 20.9+ (CI runs on 24)
+- [pnpm](https://pnpm.io) (version pinned via `packageManager` in `package.json`; run `corepack enable` to pick it up automatically)
+
 ## Getting started
 
 ```bash
@@ -42,3 +47,7 @@ See the [shadcn/ui component list](https://ui.shadcn.com/docs/components) for av
 ## Using this template
 
 After cloning, rename the project by replacing `nextjs-ts-shadcn-template` in these three places: the `name` field in `package.json`, the metadata `title` in `src/app/layout.tsx`, and the heading in `src/app/page.tsx`.
+
+## Working with Claude Code / AI agents
+
+See [`CLAUDE.md`](./CLAUDE.md) for stack details, commands, conventions, and version constraints worth knowing before upgrading dependencies in this repo.
