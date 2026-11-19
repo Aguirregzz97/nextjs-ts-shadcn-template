@@ -28,11 +28,20 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Adding shadcn/ui components
 
+shadcn/ui isn't a runtime component library — the CLI copies each
+component's source directly into `src/components/ui/` so it lives in your
+repo. When the app needs a UI piece that isn't in `src/components/ui/` yet,
+install it there first, then import it:
+
 ```bash
-pnpm dlx shadcn@latest add <component>
+pnpm dlx shadcn@latest add <component>   # vendors src/components/ui/<component>.tsx
 ```
 
-See the [shadcn/ui component list](https://ui.shadcn.com/docs/components) for available components.
+```tsx
+import { Button } from "@/components/ui/button";
+```
+
+See the [shadcn/ui component list](https://ui.shadcn.com/docs/components) for available components. See [`CLAUDE.md`](./CLAUDE.md) for the full workflow, including how to update an already-installed component.
 
 ## Scripts
 

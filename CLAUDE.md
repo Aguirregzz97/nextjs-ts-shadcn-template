@@ -35,17 +35,48 @@ npx tsc --noEmit   # type-check only (no dedicated package script)
 
 Before considering a change done, run `pnpm lint`, `pnpm format:check`, `npx tsc --noEmit`, and `pnpm build` — this mirrors what CI (`.github/workflows/ci.yml`) checks on every push/PR to `main`.
 
-## Adding / updating shadcn/ui components
+## How shadcn/ui works here (read this before using any UI component)
 
-Always go through the CLI rather than hand-writing `src/components/ui/*` —
-components are generated from the shadcn registry and tied to the `base-nova`
-style + `@base-ui/react` primitives configured in `components.json`.
+shadcn/ui is **not** a component library you `import` from `node_modules`.
+There is no package that ships a `<Dialog>` or `<Select>` at runtime. Instead,
+the `shadcn` CLI reads the registry and **copies that component's source code
+directly into this repo**, under `src/components/ui/`, wired to this
+project's style (`base-nova`), base color, and `@base-ui/react` primitives as
+configured in `components.json`. Once copied, that file is yours — it's
+ordinary project source, not a dependency.
 
-```bash
-pnpm dlx shadcn@latest add <component>        # add a new component
-pnpm dlx shadcn@latest diff <component>       # check if an installed component is out of date
-pnpm dlx shadcn@latest add <component> --overwrite  # pull in registry updates
-```
+**The workflow, every time the app/website needs a UI piece shadcn offers:**
+
+1. **Check first** whether it's already vendored: look in `src/components/ui/`
+   (e.g. `button.tsx`, `dropdown-menu.tsx` already exist). If it's there, skip
+   straight to step 3.
+2. **If it isn't vendored yet, install it into the repo before using it:**
+   ```bash
+   pnpm dlx shadcn@latest add <component>   # e.g. dialog, select, input, card
+   ```
+   This writes `src/components/ui/<component>.tsx` (plus any dependent
+   components/utilities it needs) and adds any new npm packages it requires.
+   Always use `@latest` here so what lands in the repo matches the current
+   registry/`@base-ui/react` API — don't hand-write a `src/components/ui/*`
+   file from memory or by pasting an example off the docs site; versions
+   drift and the props/`data-*` attributes won't match what's installed.
+3. **Only then** import it from the local path and use it in app code:
+   ```tsx
+   import {
+     Dialog,
+     DialogContent,
+     DialogTrigger,
+   } from "@/components/ui/dialog";
+   ```
+   Never reach for a component that hasn't been installed — install, then use.
+4. **Updating** an already-vendored component to a newer registry version:
+   ```bash
+   pnpm dlx shadcn@latest diff <component>              # see if it's out of date
+   pnpm dlx shadcn@latest add <component> --overwrite   # pull in the update
+   ```
+   Re-run the app's lint/typecheck/build after an `--overwrite`, since a
+   registry update can change props or `data-*` attributes (as happened
+   going from Radix-based to `@base-ui/react`-based primitives historically).
 
 ## Conventions
 
